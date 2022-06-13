@@ -33,6 +33,9 @@ public class GameData : MonoBehaviour
     }
     public void LoadData()
     {
-        hightScore = PlayerPrefs.GetInt("Score");
+        if (PlayerPrefs.HasKey("Score"))
+        {
+            hightScore = PlayerPrefs.GetInt("Score");
+        }
     }
 }

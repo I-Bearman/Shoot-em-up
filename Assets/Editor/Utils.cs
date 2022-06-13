@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 
-public class Utils : MonoBehaviour
+public class Utils
 {
     [MenuItem("Utils/Clear prefs")]
     public static void ClearPrefs()
