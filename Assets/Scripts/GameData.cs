@@ -14,6 +14,9 @@ public class GameData : MonoBehaviour
     public int currentScore = 0;
     public int currentRound = 0;
 
+    public float musicVol = 1;
+    public float soundsVol = 1;
+
     public int hightScore;
 
     private void Awake()
@@ -29,6 +32,8 @@ public class GameData : MonoBehaviour
         if (currentScore > hightScore)
         {
             PlayerPrefs.SetInt("Score", currentScore);
+            PlayerPrefs.SetFloat("MusicVolume", musicVol);
+            PlayerPrefs.SetFloat("SoundsVolume", soundsVol);
         }
     }
     public void LoadData()
@@ -36,6 +41,8 @@ public class GameData : MonoBehaviour
         if (PlayerPrefs.HasKey("Score"))
         {
             hightScore = PlayerPrefs.GetInt("Score");
+            musicVol = PlayerPrefs.GetFloat("MusicVolume");
+            soundsVol = PlayerPrefs.GetFloat("SoundsVolume");
         }
     }
 }

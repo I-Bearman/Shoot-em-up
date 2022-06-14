@@ -14,5 +14,14 @@ public class PlayerInput : MonoBehaviour
         float x = Input.GetAxis(GameData.HORIZONTAL_AXIS);
         float y = Input.GetAxis(GameData.VERTICAL_AXIS);
         playerMovement.Move(x, y);
+
+        float xMouse = Input.mousePosition.x;
+        float yMouse = Input.mousePosition.y;
+        playerMovement.Turn(xMouse, yMouse);
+
+        if(Input.GetMouseButtonDown(0))
+        {
+            playerMovement.Fire();
+        }
     }
 }
