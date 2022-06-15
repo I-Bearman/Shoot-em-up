@@ -1,10 +1,14 @@
+using System.Collections;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenuView : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI hightScoreText;
+    [SerializeField] private GameObject loadingPanel;
+    [SerializeField] private Slider loadingSlider;
 
     private void Start()
     {
@@ -14,7 +18,18 @@ public class MainMenuView : MonoBehaviour
 
     public void OnPlay()
     {
-        SceneManager.LoadScene(1);
+        loadingPanel.SetActive(true);
+        StartCoroutine(LoaderAsync());
+    }
+
+    IEnumerator LoaderAsync()
+    {
+        AsyncOperation operation = SceneManager.LoadSceneAsync(1);
+        while (!operation.isDone)
+        {
+            loadingSlider.value = operation.progress;
+            yield return null;
+        }
     }
 
     public void OnQuit()

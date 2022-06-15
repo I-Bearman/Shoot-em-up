@@ -9,7 +9,7 @@ public class PlayerInput : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         float x = Input.GetAxis(GameData.HORIZONTAL_AXIS);
         float y = Input.GetAxis(GameData.VERTICAL_AXIS);
@@ -18,6 +18,8 @@ public class PlayerInput : MonoBehaviour
         float xMouse = Input.mousePosition.x;
         float yMouse = Input.mousePosition.y;
         playerMovement.Turn(xMouse, yMouse);
+
+        playerMovement.RunAnimationController();
 
         if(Input.GetMouseButtonDown(0))
         {
