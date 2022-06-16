@@ -36,29 +36,36 @@ public class PlayerMovement : MonoBehaviour
 
     public void RunAnimationController()
     {
-        //float asimut = Vector3.Angle(lookDirection, rb.velocity);
-        if (Input.GetMouseButton(0))
-            Debug.Log(lookDirection.normalized-rb.velocity.normalized);
-/*        if (Vector3.Angle(rb.velocity, lookDirection) <= 45)
+        if (rb.velocity.magnitude > 0.1f)
         {
-            animator.SetFloat("Speed for_back", rb.velocity.magnitude);
+            float angle = Vector3.SignedAngle(lookDirection, rb.velocity, Vector3.up);
+
+            if (Mathf.Abs(angle) <= 45)
+            {
+                animator.SetFloat("Speed for_back", rb.velocity.magnitude);
+            }
+            else if (Mathf.Abs(angle) >= 135)
+            {
+                animator.SetFloat("Speed for_back", -rb.velocity.magnitude);
+            }
+            else if (angle > 45)
+            {
+                animator.SetFloat("Speed right_left", rb.velocity.magnitude);
+            }
+            else
+            {
+                animator.SetFloat("Speed right_left", -rb.velocity.magnitude);
+            }
         }
-        else if (Vector3.Angle(rb.velocity, lookDirection) >= 135)
+        else
         {
-            animator.SetFloat("Speed for_back", -rb.velocity.magnitude);
+            animator.SetFloat("Speed for_back", 0);
+            animator.SetFloat("Speed right_left", 0);
         }
-        else if (Vector3.SignedAngle(rb.velocity, lookDirection, lookDirection) > 45)
-        {
-            animator.SetFloat("Speed right_left", rb.velocity.magnitude);
-        }
-        else if (Vector3.SignedAngle(rb.velocity, lookDirection, lookDirection) < -45)
-        {
-            animator.SetFloat("Speed right_left", -rb.velocity.magnitude);
-        }
-*/
     }
 
     public void Fire()
     {
+        animator.SetTrigger("Fire");
     }
 }
