@@ -6,14 +6,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 lookDirection;
     private Rigidbody rb;
     private Animator animator;
-    private int screenWidth;
-    private int screenHeight;
 
-    private void Awake()
-    {
-        screenWidth = Screen.width;
-        screenHeight = Screen.height;
-    }
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -28,8 +21,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void Turn(float xMouse, float yMouse)
     {
-        float dx = xMouse - screenWidth * 0.5f;
-        float dy = yMouse - screenHeight * 0.5f;
+        float dx = xMouse - Screen.width * 0.5f;
+        float dy = yMouse - Screen.height * 0.5f;
         lookDirection = new Vector3(dx, 0, dy);
         transform.LookAt(lookDirection);
     }
