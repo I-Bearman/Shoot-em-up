@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
-    private Vector3 lookDirection;
+    public Vector3 lookDirection;
     private Rigidbody rb;
     private Animator animator;
 
@@ -57,8 +57,8 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void Fire()
+    public void PlayDeathAnimation()
     {
-        animator.SetTrigger("Fire");
+
     }
 }

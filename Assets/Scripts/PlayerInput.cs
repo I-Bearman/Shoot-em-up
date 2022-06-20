@@ -5,10 +5,12 @@ public class PlayerInput : MonoBehaviour
 {
     [SerializeField] private Texture2D cursorTex;
     private PlayerMovement playerMovement;
+    private Shooting shooting;
 
     private void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
+        shooting = GetComponent<Shooting>();
         Cursor.SetCursor(cursorTex, new Vector2(25,25), CursorMode.Auto);
     }
 
@@ -21,7 +23,7 @@ public class PlayerInput : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            playerMovement.Fire();
+            shooting.Fire();
         }
 
     }

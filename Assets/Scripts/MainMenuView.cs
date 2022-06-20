@@ -22,7 +22,7 @@ public class MainMenuView : MonoBehaviour
         StartCoroutine(LoaderAsync());
     }
 
-    IEnumerator LoaderAsync()
+    private IEnumerator LoaderAsync()
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(1);
         while (!operation.isDone)

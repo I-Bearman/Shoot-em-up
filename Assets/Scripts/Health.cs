@@ -4,22 +4,23 @@ public class Health : MonoBehaviour
 {
     public int currentHealth;
     public bool isAlive = true;
-    private ActorView actorView;
+    private PlayerMovement playerMovement;
 
     private void Awake()
     {
-        actorView = GetComponent<ActorView>();
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
     public void TakeDamage(int dmg)
     {
         currentHealth -= dmg;
+        Debug.Log("dmg");
 
         if(currentHealth <= 0)
         {
             currentHealth = 0;
             isAlive = false;
-            actorView.PlayDeathAnimation();
+            playerMovement.PlayDeathAnimation();
         }
     }
 }
