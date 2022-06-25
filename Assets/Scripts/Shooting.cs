@@ -24,18 +24,19 @@ public class Shooting : MonoBehaviour
         ammoText.text = $"Ammo:{ammo}";
 
     }
-    public void Fire()
+    public void Fire(float xMouse, float yMouse)
     {
         animator.SetTrigger("Fire");
         if (ammo > 0)
         {
             ammo--;
             ammoText.text = $"Ammo:{ammo}";
-            Ray ray = new Ray(gunpoint.position, Vector3.Project(gunpoint.position, playerMovement.lookDirection).normalized * maxDistance);
-            Debug.DrawRay(gunpoint.position, Vector3.Project(gunpoint.position, playerMovement.lookDirection).normalized * maxDistance, Color.red, 50);
+            Ray ray = new Ray(gunpoint.position,playerMovement.lookDirection.normalized * maxDistance);
+            //Debug.DrawRay(gunpoint.position,playerMovement.lookDirection.normalized * maxDistance, Color.red, 50);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, maxDistance, 7))
+            if (Physics.Raycast(ray, out hit, maxDistance) && hit.transform.gameObject.layer ==7)
             {
+                Debug.Log("hit");
                 hit.transform.gameObject.GetComponent<Health>().TakeDamage(damageForce);
             }
         }
