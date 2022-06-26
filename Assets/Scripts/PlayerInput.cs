@@ -23,9 +23,7 @@ public class PlayerInput : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && Time.timeScale != 0)
         {
-            float xMouse = Input.mousePosition.x;
-            float yMouse = Input.mousePosition.y;
-            shooting.Fire(xMouse,yMouse);
+            shooting.Fire();
         }
 
     }

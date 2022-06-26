@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -24,7 +22,7 @@ public class Shooting : MonoBehaviour
         ammoText.text = $"Ammo:{ammo}";
 
     }
-    public void Fire(float xMouse, float yMouse)
+    public void Fire()
     {
         animator.SetTrigger("Fire");
         if (ammo > 0)
@@ -32,7 +30,7 @@ public class Shooting : MonoBehaviour
             ammo--;
             ammoText.text = $"Ammo:{ammo}";
             Ray ray = new Ray(gunpoint.position,playerMovement.lookDirection.normalized * maxDistance);
-            //Debug.DrawRay(gunpoint.position,playerMovement.lookDirection.normalized * maxDistance, Color.red, 50);
+            Debug.DrawRay(gunpoint.position,playerMovement.lookDirection.normalized * maxDistance, Color.red, 50);
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, maxDistance) && hit.transform.gameObject.layer ==7)
             {
