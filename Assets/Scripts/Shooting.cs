@@ -30,9 +30,8 @@ public class Shooting : MonoBehaviour
             ammo--;
             ammoText.text = $"Ammo:{ammo}";
             Ray ray = new Ray(gunpoint.position,playerMovement.lookDirection.normalized * maxDistance);
-            Debug.DrawRay(gunpoint.position,playerMovement.lookDirection.normalized * maxDistance, Color.red, 50);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, maxDistance) && hit.transform.gameObject.layer ==7)
+            if (Physics.Raycast(ray, out hit, maxDistance) && hit.transform.gameObject.layer == 7)
             {
                 Debug.Log("hit");
                 hit.transform.gameObject.GetComponent<Health>().TakeDamage(damageForce);
