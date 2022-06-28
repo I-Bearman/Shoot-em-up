@@ -1833,6 +1833,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  lookDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &5849486938600441008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1859,7 +1860,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9ff3ed5ab814354a976e9e5fbbd3b89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammo: 500
+  ammo: 50
   ammoText: {fileID: 0}
   gunpoint: {fileID: 5992886523985536235}
   maxDistance: 100

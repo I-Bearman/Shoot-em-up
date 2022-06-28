@@ -15,12 +15,10 @@ public class Shooting : MonoBehaviour
     {
         playerMovement = GetComponent<PlayerMovement>();
         animator = GetComponent<Animator>();
-
     }
     private void Start()
     {
         ammoText.text = $"Ammo:{ammo}";
-
     }
     public void Fire()
     {
@@ -37,7 +35,5 @@ public class Shooting : MonoBehaviour
                 hit.transform.gameObject.GetComponent<Health>().TakeDamage(damageForce);
             }
         }
-
     }
-
 }
