@@ -31,7 +31,6 @@ public class Shooting : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, maxDistance) && hit.transform.gameObject.layer == 7)
             {
-                Debug.Log("hit");
                 hit.transform.gameObject.GetComponent<Health>().TakeDamage(damageForce);
             }
         }

@@ -56,9 +56,4 @@ public class PlayerMovement : MonoBehaviour
             animator.SetFloat("Speed right_left", 0);
         }
     }
-
-    public void PlayDeathAnimation()
-    {
-
-    }
 }

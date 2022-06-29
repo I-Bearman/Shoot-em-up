@@ -11,6 +11,7 @@ public class Enemy
 
 public class Spawner : MonoBehaviour
 {
+    [SerializeField] private Transform hero;
     [SerializeField] private List<Enemy> enemies;
     [SerializeField] private List<GameObject> enemiesOnScreen;
 
@@ -21,6 +22,7 @@ public class Spawner : MonoBehaviour
             for (int j = 0; j < enemies[i].count; j++)
             {
                 GameObject enemyObject = Instantiate(enemies[i].prefab);
+                enemyObject.GetComponent<EnemyMovement>().target = hero;
                 enemiesOnScreen.Add(enemyObject);
                 enemyObject.SetActive(false);
             }

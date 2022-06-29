@@ -4,23 +4,36 @@ public class Health : MonoBehaviour
 {
     public int currentHealth;
     public bool isAlive = true;
-    private PlayerMovement playerMovement;
+    private Animator animator;
+    private new Collider collider;
 
     private void Awake()
     {
-        playerMovement = GetComponent<PlayerMovement>();
+        animator = GetComponent<Animator>();
+        collider = GetComponent<Collider>();
     }
 
     public void TakeDamage(int dmg)
     {
         currentHealth -= dmg;
-        Debug.Log("dmg");
-
         if(currentHealth <= 0)
         {
             currentHealth = 0;
             isAlive = false;
-            playerMovement.PlayDeathAnimation();
+            Death();
         }
+    }
+    private void Death()
+    {
+        if (TryGetComponent(out EnemyMovement enemyMovement))
+        {
+            enemyMovement.enabled = false;
+        }
+        else if (TryGetComponent(out PlayerMovement playerMovement))
+        {
+            playerMovement.enabled = false;
+        }
+        collider.enabled = false;
+        animator.SetTrigger("Death");
     }
 }
