@@ -18,26 +18,28 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update()
     {
-        navMeshAgent.SetDestination(target.position);
+        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Punch"))
+        {
+            navMeshAgent.isStopped = false;
+            navMeshAgent.SetDestination(target.position);
+        }
         if(!navMeshAgent.isStopped)
         {
             animator.SetBool("Walk", true);
         }
-        else
-        {
-            animator.SetBool("Walk", false);
-        }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other == targetCollider)
         {
+            animator.SetBool("Walk", false);
             Attack();
         }
     }
     private void Attack()
     {
+        navMeshAgent.isStopped = true;
         animator.SetTrigger("Attack");
     }
 }

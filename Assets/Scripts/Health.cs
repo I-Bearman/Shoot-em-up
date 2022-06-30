@@ -27,7 +27,10 @@ public class Health : MonoBehaviour
     {
         if (TryGetComponent(out EnemyMovement enemyMovement))
         {
+            gameObject.layer = 0;
             enemyMovement.enabled = false;
+            int newScore = ++GameData.Instance.currentScore;
+            GameData.Instance.scoreText.text = $"Score: {newScore}";
         }
         else if (TryGetComponent(out PlayerMovement playerMovement))
         {

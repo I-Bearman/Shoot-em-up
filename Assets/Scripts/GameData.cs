@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class GameData : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class GameData : MonoBehaviour
     public float soundsVol = 1;
 
     public int hightScore;
+
+    public TMP_Text scoreText;
 
     private void Awake()
     {
