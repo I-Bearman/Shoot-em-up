@@ -1835,6 +1835,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hero: {fileID: 543450653423344165}
+  platform: {fileID: 1628348951}
+  distanceToEnemiesSpawn: 3
   enemies:
   - count: 10
     prefab: {fileID: 7849157257279922451, guid: b20d6b49504b34c44990b0e6502ab359, type: 3}

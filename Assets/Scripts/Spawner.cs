@@ -12,19 +12,33 @@ public class Enemy
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private Transform hero;
+    [SerializeField] private Transform platform;
+    [SerializeField] private float distanceToEnemiesSpawn;
     [SerializeField] private List<Enemy> enemies;
     [SerializeField] private List<GameObject> enemiesOnScreen;
 
+    private float platRadiusX;
+    private float platRadiusZ;
+
     private void Awake()
     {
+        platRadiusX = platform.localScale.x * 5;
+        platRadiusZ = platform.localScale.z * 5;
+
         for (int i = 0; i < enemies.Count; i++)
         {
             for (int j = 0; j < enemies[i].count; j++)
             {
-                GameObject enemyObject = Instantiate(enemies[i].prefab);
-                enemyObject.GetComponent<EnemyMovement>().target = hero;
+                enemies[i].prefab.GetComponent<EnemyMovement>().target = hero;
+                Again:
+                Vector3 pos = new Vector3(Random.Range(platform.position.x - platRadiusX, platform.position.x + platRadiusX), platform.position.y + 1, Random.Range(platform.position.z - platRadiusZ, platform.position.z + platRadiusZ));
+                if (Vector3.Distance(hero.position, pos) < distanceToEnemiesSpawn)
+                {
+                    goto Again;
+                }
+                GameObject enemyObject = Instantiate(enemies[i].prefab, pos, Quaternion.identity);
                 enemiesOnScreen.Add(enemyObject);
-                enemyObject.SetActive(false);
+                //enemyObject.SetActive(false);
             }
         }
     }
