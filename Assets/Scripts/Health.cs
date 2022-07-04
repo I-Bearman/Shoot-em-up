@@ -15,6 +15,7 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(int dmg)
     {
+        animator.SetTrigger("TakeDamage");
         currentHealth -= dmg;
         if(currentHealth <= 0)
         {
@@ -25,6 +26,7 @@ public class Health : MonoBehaviour
     }
     private void Death()
     {
+        animator.SetTrigger("Death");
         if (TryGetComponent(out EnemyMovement enemyMovement))
         {
             gameObject.layer = 0;
@@ -37,6 +39,5 @@ public class Health : MonoBehaviour
             playerMovement.enabled = false;
         }
         collider.enabled = false;
-        animator.SetTrigger("Death");
     }
 }

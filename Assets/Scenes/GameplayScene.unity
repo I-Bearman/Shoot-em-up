@@ -3938,10 +3938,6 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 543450653423344165}
-    - target: {fileID: 5798275710135525501, guid: b20d6b49504b34c44990b0e6502ab359, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 31fb16557fd653b40a57485bb84d9ff9, type: 2}
     - target: {fileID: 7468690415762881449, guid: b20d6b49504b34c44990b0e6502ab359, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -3989,18 +3985,6 @@ PrefabInstance:
     - target: {fileID: 7849157257279922451, guid: b20d6b49504b34c44990b0e6502ab359, type: 3}
       propertyPath: m_Name
       value: Zombie
-      objectReference: {fileID: 0}
-    - target: {fileID: 8043769111469416881, guid: b20d6b49504b34c44990b0e6502ab359, type: 3}
-      propertyPath: m_Size.z
-      value: 1.11
-      objectReference: {fileID: 0}
-    - target: {fileID: 8043769111469416881, guid: b20d6b49504b34c44990b0e6502ab359, type: 3}
-      propertyPath: m_Center.z
-      value: 0.44
-      objectReference: {fileID: 0}
-    - target: {fileID: 8280688613822296646, guid: b20d6b49504b34c44990b0e6502ab359, type: 3}
-      propertyPath: m_StoppingDistance
-      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b20d6b49504b34c44990b0e6502ab359, type: 3}

@@ -110,7 +110,7 @@ PrefabInstance:
     - target: {fileID: -5738929356375114689, guid: 87d983889b1c6bb4fb5c42b5cd730b7b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: eafb66d7b4b1b0f4ea3718a070b7be4a, type: 2}
+      objectReference: {fileID: 2100000, guid: 31fb16557fd653b40a57485bb84d9ff9, type: 2}
     - target: {fileID: -5561550452697079657, guid: 87d983889b1c6bb4fb5c42b5cd730b7b, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -403,8 +403,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.5, z: 0.5}
-  m_Center: {x: 0, y: 1.33, z: 0.31}
+  m_Size: {x: 0.8, y: 0.5, z: 1.11}
+  m_Center: {x: 0, y: 1.33, z: 0.44}
 --- !u!114 &732940866412598036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -432,6 +432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  canWalk: 0
 --- !u!195 &8280688613822296646
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -446,7 +447,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 300
-  m_StoppingDistance: 2
+  m_StoppingDistance: 1.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

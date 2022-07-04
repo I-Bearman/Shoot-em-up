@@ -5,6 +5,7 @@ using UnityEngine.AI;
 public class EnemyMovement : MonoBehaviour
 {
     public Transform target;
+    public bool canWalk = true;
     private Collider targetCollider;
     private NavMeshAgent navMeshAgent;
     private Animator animator;
@@ -18,11 +19,17 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update()
     {
-        if (!animator.GetCurrentAnimatorStateInfo(0).IsName("Punch"))
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Punch") || animator.GetCurrentAnimatorStateInfo(0).IsName("TakeDamage") || animator.GetCurrentAnimatorStateInfo(0).IsName("Death"))
+        {
+            navMeshAgent.isStopped = true;
+            navMeshAgent.SetDestination(transform.position);
+        }
+        else
         {
             navMeshAgent.isStopped = false;
             navMeshAgent.SetDestination(target.position);
         }
+
         if(!navMeshAgent.isStopped)
         {
             animator.SetBool("Walk", true);
@@ -39,7 +46,7 @@ public class EnemyMovement : MonoBehaviour
     }
     private void Attack()
     {
-        navMeshAgent.isStopped = true;
+        //navMeshAgent.isStopped = true;
         animator.SetTrigger("Attack");
     }
 }
