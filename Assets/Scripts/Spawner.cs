@@ -15,6 +15,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private Transform platform;
     [SerializeField] private float distanceToEnemiesSpawn;
     [SerializeField] private List<Enemy> enemies;
+    [SerializeField] private List<AudioClip> enemySounds;
     [SerializeField] private List<GameObject> enemiesOnScreen;
 
     private float platRadiusX;

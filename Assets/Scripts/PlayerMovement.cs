@@ -6,11 +6,13 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 lookDirection;
     private Rigidbody rb;
     private Animator animator;
+    private AudioSource runSound;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        runSound = GetComponent<AudioSource>();
     }
 
     public void Move(float x, float y)
@@ -31,27 +33,21 @@ public class PlayerMovement : MonoBehaviour
     {
         if (rb.velocity.magnitude > 0.1f)
         {
+            animator.SetBool("Run", true);
+            if (!runSound.isPlaying)
+            {
+                runSound.Play();
+            }
             float angle = Vector3.SignedAngle(lookDirection, rb.velocity, Vector3.up);
+            angle *= Mathf.Deg2Rad;
+            animator.SetFloat("Speed for_back", rb.velocity.magnitude * Mathf.Cos(angle));
+            animator.SetFloat("Speed right_left", rb.velocity.magnitude * Mathf.Sin(angle));
 
-            if (Mathf.Abs(angle) <= 45)
-            {
-                animator.SetFloat("Speed for_back", rb.velocity.magnitude);
-            }
-            else if (Mathf.Abs(angle) >= 135)
-            {
-                animator.SetFloat("Speed for_back", -rb.velocity.magnitude);
-            }
-            else if (angle > 45)
-            {
-                animator.SetFloat("Speed right_left", rb.velocity.magnitude);
-            }
-            else
-            {
-                animator.SetFloat("Speed right_left", -rb.velocity.magnitude);
-            }
         }
         else
         {
+            runSound.Pause();
+            animator.SetBool("Run", false);
             animator.SetFloat("Speed for_back", 0);
             animator.SetFloat("Speed right_left", 0);
         }
