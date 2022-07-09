@@ -13,12 +13,14 @@ public class Shooting : MonoBehaviour
     [SerializeField] private AudioClip shootSound;
     [SerializeField] private AudioClip misfireSound;
     private PlayerMovement playerMovement;
+    private AudioSource audioSource;
     private Animator animator;
     private bool canShoot = true;
 
     private void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
+        audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
     }
     private void Start()
@@ -34,7 +36,7 @@ public class Shooting : MonoBehaviour
             {
                 ammo--;
                 ammoText.text = $"Ammo:{ammo}";
-                //shootSound.Play();
+                audioSource.PlayOneShot(shootSound);
                 Ray ray = new Ray(gunpoint.position, playerMovement.lookDirection.normalized * maxDistance);
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit, maxDistance) && hit.transform.gameObject.layer == 7)

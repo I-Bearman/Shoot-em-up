@@ -30,8 +30,13 @@ public class Spawner : MonoBehaviour
         {
             for (int j = 0; j < enemies[i].count; j++)
             {
-                enemies[i].prefab.GetComponent<EnemyMovement>().target = hero;
-                Again:
+                EnemyMovement enemyMovement = enemies[i].prefab.GetComponent<EnemyMovement>();
+                enemyMovement.target = hero;
+                enemyMovement.zombieSounds[0] = enemySounds[Random.Range(0, 4)];
+                enemyMovement.zombieSounds[1] = enemySounds[Random.Range(4, 9)];
+                enemyMovement.zombieSounds[2] = enemySounds[Random.Range(9, 13)];
+
+            Again:
                 Vector3 pos = new Vector3(Random.Range(platform.position.x - platRadiusX, platform.position.x + platRadiusX), platform.position.y + 1, Random.Range(platform.position.z - platRadiusZ, platform.position.z + platRadiusZ));
                 if (Vector3.Distance(hero.position, pos) < distanceToEnemiesSpawn)
                 {

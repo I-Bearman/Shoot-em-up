@@ -6,15 +6,18 @@ public class EnemyMovement : MonoBehaviour
 {
     public Transform target;
     public bool canWalk = true;
+    public AudioClip[] zombieSounds = new AudioClip[3]; 
     private Collider targetCollider;
     private NavMeshAgent navMeshAgent;
     private Animator animator;
+    private AudioSource audioSource;
 
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         targetCollider = target.gameObject.GetComponent<Collider>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -36,7 +39,7 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other == targetCollider)
         {
@@ -47,6 +50,13 @@ public class EnemyMovement : MonoBehaviour
     private void Attack()
     {
         //navMeshAgent.isStopped = true;
+        audioSource.PlayOneShot(zombieSounds[1]);
         animator.SetTrigger("Attack");
+    }
+
+    public void GiveDamage()
+    {
+        
+        Physics.SphereCast(transform.position + Vector3.forward*0.5f,1,);
     }
 }

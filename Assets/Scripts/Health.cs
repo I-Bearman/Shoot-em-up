@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Health : MonoBehaviour
@@ -6,15 +7,30 @@ public class Health : MonoBehaviour
     public bool isAlive = true;
     private Animator animator;
     private new Collider collider;
+    private AudioSource audioSource;
+    private EnemyMovement enemyMovement;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
         collider = GetComponent<Collider>();
+        TryGetComponent(out enemyMovement);
+        audioSource = GetComponent<AudioSource>();
+    }
+    private void Start()
+    {
+        if (enemyMovement)
+        {
+            StartCoroutine(Screaming(enemyMovement));
+        }
     }
 
     public void TakeDamage(int dmg)
     {
+        if (enemyMovement)
+        {
+            audioSource.PlayOneShot(enemyMovement.zombieSounds[2]);
+        }
         animator.SetTrigger("TakeDamage");
         currentHealth -= dmg;
         if(currentHealth <= 0)
@@ -27,7 +43,7 @@ public class Health : MonoBehaviour
     private void Death()
     {
         animator.SetTrigger("Death");
-        if (TryGetComponent(out EnemyMovement enemyMovement))
+        if (enemyMovement)
         {
             gameObject.layer = 0;
             enemyMovement.enabled = false;
@@ -39,5 +55,16 @@ public class Health : MonoBehaviour
             playerMovement.enabled = false;
         }
         collider.enabled = false;
+    }
+
+    IEnumerator Screaming(EnemyMovement enemyMovement)
+    {
+        Again:
+        yield return new WaitForSeconds(Random.Range(5f,30f));
+        if(isAlive)
+        {
+            audioSource.PlayOneShot(enemyMovement.zombieSounds[0]);
+            goto Again;
+        }
     }
 }
