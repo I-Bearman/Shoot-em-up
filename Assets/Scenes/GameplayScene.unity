@@ -1854,6 +1854,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0547b940dba4d964e9e447af1dc0759a, type: 3}
   - {fileID: 8300000, guid: a4366158371c9514cae30cfff454dcb2, type: 3}
   - {fileID: 8300000, guid: fc1882cb9cb0d474c95537bbdb4c48bd, type: 3}
+  damage: 0a000000
   enemiesOnScreen: []
 --- !u!1 &1363864865
 GameObject:
@@ -3956,6 +3957,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 543450653423344165}
+    - target: {fileID: 3538041858480923626, guid: b20d6b49504b34c44990b0e6502ab359, type: 3}
+      propertyPath: damageForce
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7468690415762881449, guid: b20d6b49504b34c44990b0e6502ab359, type: 3}
       propertyPath: m_RootOrder
       value: 10

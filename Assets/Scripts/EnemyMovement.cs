@@ -6,7 +6,8 @@ public class EnemyMovement : MonoBehaviour
 {
     public Transform target;
     public bool canWalk = true;
-    public AudioClip[] zombieSounds = new AudioClip[3]; 
+    public AudioClip[] zombieSounds = new AudioClip[3];
+    public int damageForce;
     private Collider targetCollider;
     private NavMeshAgent navMeshAgent;
     private Animator animator;
@@ -49,14 +50,17 @@ public class EnemyMovement : MonoBehaviour
     }
     private void Attack()
     {
-        //navMeshAgent.isStopped = true;
         audioSource.PlayOneShot(zombieSounds[1]);
         animator.SetTrigger("Attack");
     }
 
     public void GiveDamage()
     {
-        
-        Physics.SphereCast(transform.position + Vector3.forward*0.5f,1,);
+        Ray ray = new Ray(transform.position + Vector3.up, transform.rotation.eulerAngles);
+        if (Physics.SphereCast(ray, 1, out RaycastHit raycastHit, 0.5f) && raycastHit.transform.gameObject.layer == 6)
+        {
+            raycastHit.transform.gameObject.GetComponent<Health>().TakeDamage(damageForce);
+            Debug.Log("135");
+        }
     }
 }

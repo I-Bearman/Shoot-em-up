@@ -16,6 +16,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private float distanceToEnemiesSpawn;
     [SerializeField] private List<Enemy> enemies;
     [SerializeField] private List<AudioClip> enemySounds;
+    [SerializeField] private int[] damage;
     [SerializeField] private List<GameObject> enemiesOnScreen;
 
     private float platRadiusX;
@@ -35,6 +36,7 @@ public class Spawner : MonoBehaviour
                 enemyMovement.zombieSounds[0] = enemySounds[Random.Range(0, 4)];
                 enemyMovement.zombieSounds[1] = enemySounds[Random.Range(4, 9)];
                 enemyMovement.zombieSounds[2] = enemySounds[Random.Range(9, 13)];
+                enemyMovement.damageForce = damage[i];
 
             Again:
                 Vector3 pos = new Vector3(Random.Range(platform.position.x - platRadiusX, platform.position.x + platRadiusX), platform.position.y + 1, Random.Range(platform.position.z - platRadiusZ, platform.position.z + platRadiusZ));
