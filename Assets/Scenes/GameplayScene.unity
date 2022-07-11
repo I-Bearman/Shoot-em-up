@@ -3892,10 +3892,6 @@ PrefabInstance:
       propertyPath: ammoText
       value: 
       objectReference: {fileID: 1974449682}
-    - target: {fileID: 5849486937033136732, guid: d113e34f89da23c4c89ec974073627ba, type: 3}
-      propertyPath: shootSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 6dd7024f00606b44eb5884197a66a893, type: 3}
     - target: {fileID: 6244016711665008767, guid: d113e34f89da23c4c89ec974073627ba, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -3960,6 +3956,10 @@ PrefabInstance:
     - target: {fileID: 3538041858480923626, guid: b20d6b49504b34c44990b0e6502ab359, type: 3}
       propertyPath: damageForce
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3538041858480923626, guid: b20d6b49504b34c44990b0e6502ab359, type: 3}
+      propertyPath: layerMask.m_Bits
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 7468690415762881449, guid: b20d6b49504b34c44990b0e6502ab359, type: 3}
       propertyPath: m_RootOrder

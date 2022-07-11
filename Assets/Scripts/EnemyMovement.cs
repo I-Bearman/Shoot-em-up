@@ -5,13 +5,14 @@ using UnityEngine.AI;
 public class EnemyMovement : MonoBehaviour
 {
     public Transform target;
-    public bool canWalk = true;
     public AudioClip[] zombieSounds = new AudioClip[3];
-    public int damageForce;
     private Collider targetCollider;
     private NavMeshAgent navMeshAgent;
     private Animator animator;
     private AudioSource audioSource;
+    public int damageForce;
+    public bool canWalk = true;
+    private bool canPunch = false;
 
     private void Awake()
     {
@@ -44,8 +45,16 @@ public class EnemyMovement : MonoBehaviour
     {
         if (other == targetCollider)
         {
+            canPunch = true;
             animator.SetBool("Walk", false);
             Attack();
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other == targetCollider)
+        {
+            canPunch = false;
         }
     }
     private void Attack()
@@ -53,14 +62,21 @@ public class EnemyMovement : MonoBehaviour
         audioSource.PlayOneShot(zombieSounds[1]);
         animator.SetTrigger("Attack");
     }
+    public void AttackAgain() //if the player still is in trigger
+    {
+        if (canPunch)
+            Attack();
+    }
 
     public void GiveDamage()
     {
-        Ray ray = new Ray(transform.position + Vector3.up, transform.rotation.eulerAngles);
-        if (Physics.SphereCast(ray, 1, out RaycastHit raycastHit, 0.5f) && raycastHit.transform.gameObject.layer == 6)
+        RaycastHit[] raycastHit = Physics.SphereCastAll(transform.position + Vector3.up, 0.8f, transform.forward + Vector3.up, 1);
+        for (int i = 0; i < raycastHit.Length; i++)
         {
-            raycastHit.transform.gameObject.GetComponent<Health>().TakeDamage(damageForce);
-            Debug.Log("135");
+            if (raycastHit[i].transform.gameObject.layer == 6)
+            {
+                raycastHit[i].transform.gameObject.GetComponent<Health>().TakeDamage(damageForce);
+            }
         }
     }
 }

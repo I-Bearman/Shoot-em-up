@@ -1867,7 +1867,7 @@ MonoBehaviour:
   maxDistance: 100
   damageForce: 10
   rateOfFire: 0.5
-  shootSound: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 6dd7024f00606b44eb5884197a66a893, type: 3}
   misfireSound: {fileID: 0}
 --- !u!82 &7551373532432866588
 AudioSource:
