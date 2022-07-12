@@ -59,4 +59,14 @@ public class Shooting : MonoBehaviour
         yield return new WaitForSeconds(rateOfFire);
         canShoot = true;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer == 8)
+        {
+            Destroy(other.gameObject);
+            ammo += 50;
+            ammoText.text = $"Ammo:{ammo}";
+        }
+    }
 }

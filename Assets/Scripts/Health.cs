@@ -1,14 +1,17 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
+    [SerializeField] Image HPBar;
     public int currentHealth;
     public bool isAlive = true;
     private Animator animator;
     private new Collider collider;
     private AudioSource audioSource;
     private EnemyMovement enemyMovement;
+    private int maxHealth;
 
     private void Awake()
     {
@@ -19,6 +22,7 @@ public class Health : MonoBehaviour
     }
     private void Start()
     {
+        maxHealth = currentHealth;
         if (enemyMovement)
         {
             StartCoroutine(Screaming(enemyMovement));
@@ -38,6 +42,10 @@ public class Health : MonoBehaviour
             currentHealth = 0;
             isAlive = false;
             Death();
+        }
+        if (!enemyMovement)
+        {
+            HPBar.fillAmount = (float)currentHealth / (float)maxHealth;
         }
     }
     private void Death()
