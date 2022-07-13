@@ -513,7 +513,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f15fb62cfdc057d4da80eebdb1a93b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 30
+  HPBar: {fileID: 0}
+  currentHealth: 2
   isAlive: 1
 --- !u!114 &3538041858480923626
 MonoBehaviour:
@@ -528,11 +529,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  canWalk: 0
   zombieSounds:
-  - {fileID: 8300000, guid: d108e9ae3908d4d479e1e41cca0188a3, type: 3}
+  - {fileID: 8300000, guid: 821b6440d8e269c40b5a0eb8a44a079d, type: 3}
   - {fileID: 8300000, guid: 5ce6bb262e363834db2b5cdef8a21155, type: 3}
-  - {fileID: 8300000, guid: 0547b940dba4d964e9e447af1dc0759a, type: 3}
+  - {fileID: 8300000, guid: a4366158371c9514cae30cfff454dcb2, type: 3}
+  damageForce: 1
+  canWalk: 1
 --- !u!195 &8280688613822296646
 NavMeshAgent:
   m_ObjectHideFlags: 0

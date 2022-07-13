@@ -1847,7 +1847,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f15fb62cfdc057d4da80eebdb1a93b04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 100
+  HPBar: {fileID: 0}
+  currentHealth: 3
   isAlive: 1
 --- !u!114 &5849486937033136732
 MonoBehaviour:
@@ -1865,7 +1866,7 @@ MonoBehaviour:
   ammoText: {fileID: 0}
   gunpoint: {fileID: 5992886523985536235}
   maxDistance: 100
-  damageForce: 10
+  damageForce: 1
   rateOfFire: 0.5
   shootSound: {fileID: 8300000, guid: 6dd7024f00606b44eb5884197a66a893, type: 3}
   misfireSound: {fileID: 0}
