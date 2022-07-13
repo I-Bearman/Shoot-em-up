@@ -17,10 +17,12 @@ public class Settings : MonoBehaviour
         if(GameData.Instance.musicVol != musicSlider.value)
         {
             GameData.Instance.musicVol = musicSlider.value;
+            GameData.Instance.ChangeMusicVol();
         }
         if (GameData.Instance.soundsVol != soundsSlider.value)
         {
             GameData.Instance.soundsVol = soundsSlider.value;
+            GameData.Instance.ChangeSoundsVol();
         }
 
     }

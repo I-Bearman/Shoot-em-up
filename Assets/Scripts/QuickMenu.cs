@@ -12,6 +12,7 @@ public class QuickMenu : MonoBehaviour
         {
             Instance = this;
         }
+        //GameData.Instance.LoadData();
         Time.timeScale = 1;
     }
 

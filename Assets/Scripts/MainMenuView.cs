@@ -18,6 +18,7 @@ public class MainMenuView : MonoBehaviour
 
     public void OnPlay()
     {
+        GameData.Instance.SaveData();
         loadingPanel.SetActive(true);
         StartCoroutine(LoaderAsync());
     }

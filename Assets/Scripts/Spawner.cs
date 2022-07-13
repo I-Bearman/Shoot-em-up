@@ -43,8 +43,15 @@ public class Spawner : MonoBehaviour
                 }
                 GameObject enemyObject = Instantiate(enemies[i].prefab, pos, Quaternion.identity);
                 enemiesOnScreen.Add(enemyObject);
+                CreateSoundList(enemyObject);
                 //enemyObject.SetActive(false);
             }
         }
+    }
+
+    private void CreateSoundList(GameObject gameObject)
+    {
+        AudioSource audioSource = gameObject.GetComponent<AudioSource>();
+        GameData.Instance.sounds.Add(audioSource);
     }
 }
