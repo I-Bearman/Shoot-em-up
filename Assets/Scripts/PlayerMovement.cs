@@ -3,16 +3,15 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
+    [SerializeField] private AudioSource runSound;
     public Vector3 lookDirection;
     private Rigidbody rb;
     private Animator animator;
-    private AudioSource runSound;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
-        runSound = GetComponent<AudioSource>();
     }
 
     public void Move(float x, float y)

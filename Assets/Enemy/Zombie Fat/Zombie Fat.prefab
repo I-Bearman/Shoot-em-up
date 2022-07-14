@@ -777,6 +777,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4513348508736691122}
   - component: {fileID: 5827729827293931807}
+  - component: {fileID: 155644282}
+  - component: {fileID: 155644281}
   m_Layer: 7
   m_Name: Eyes
   m_TagString: Untagged
@@ -852,6 +854,31 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.005805537, y: 0.19434649, z: 0.1484558}
     m_Extent: {x: 0.046430733, y: 0.018519819, z: 0.017548054}
   m_DirtyAABB: 0
+--- !u!135 &155644282
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3221080128000219359}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5
+  m_Center: {x: 0.005683467, y: 1.6664281, z: 0.10647696}
+--- !u!114 &155644281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3221080128000219359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a2888d0438b72f47980308a0a383a1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3282220471206429577
 GameObject:
   m_ObjectHideFlags: 0
@@ -2739,16 +2766,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8941506970771887640}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc6adec1c4e202b4299dbc486f4eec19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   zombieSounds:
-  - {fileID: 8300000, guid: 90054576c036ea44096d20cc89ff4da2, type: 3}
-  - {fileID: 8300000, guid: 5ce6bb262e363834db2b5cdef8a21155, type: 3}
-  - {fileID: 8300000, guid: bdb798b20d5ac2f438f3a562f4150019, type: 3}
+  - {fileID: 8300000, guid: d0dd5a8e1fcf88c4c990c0c54c58a2ea, type: 3}
+  - {fileID: 8300000, guid: 83041cb4dc7766b48a4342db7511819d, type: 3}
+  - {fileID: 8300000, guid: 0547b940dba4d964e9e447af1dc0759a, type: 3}
   damageForce: 2
   canWalk: 1
 --- !u!195 &8131236924569725771

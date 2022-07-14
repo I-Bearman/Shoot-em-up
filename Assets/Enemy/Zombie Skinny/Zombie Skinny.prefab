@@ -378,6 +378,36 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 87d983889b1c6bb4fb5c42b5cd730b7b, type: 3}
   m_PrefabInstance: {fileID: 6930097689985309762}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4343933531237724116 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6657560127643677590, guid: 87d983889b1c6bb4fb5c42b5cd730b7b, type: 3}
+  m_PrefabInstance: {fileID: 6930097689985309762}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &774476580
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4343933531237724116}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5
+  m_Center: {x: 0.000026913358, y: 1.6773266, z: 0.063532114}
+--- !u!114 &774476579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4343933531237724116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a2888d0438b72f47980308a0a383a1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &7547458114191694778
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -523,16 +553,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7849157257279922451}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc6adec1c4e202b4299dbc486f4eec19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   zombieSounds:
-  - {fileID: 8300000, guid: 27b98a8c68f991b408c5c6afff25358c, type: 3}
-  - {fileID: 8300000, guid: 4fb45f9472f5e554c82a5a9c7ba4c739, type: 3}
-  - {fileID: 8300000, guid: fc1882cb9cb0d474c95537bbdb4c48bd, type: 3}
+  - {fileID: 8300000, guid: d0dd5a8e1fcf88c4c990c0c54c58a2ea, type: 3}
+  - {fileID: 8300000, guid: 83041cb4dc7766b48a4342db7511819d, type: 3}
+  - {fileID: 8300000, guid: 0547b940dba4d964e9e447af1dc0759a, type: 3}
   damageForce: 1
   canWalk: 1
 --- !u!195 &8280688613822296646

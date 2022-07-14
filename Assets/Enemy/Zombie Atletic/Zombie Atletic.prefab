@@ -964,6 +964,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2931818013590255947}
   - component: {fileID: 5110753366051703782}
+  - component: {fileID: 207996273}
+  - component: {fileID: 207996272}
   m_Layer: 7
   m_Name: Eyes
   m_TagString: Untagged
@@ -1039,6 +1041,31 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.0021831952, y: 0.17425323, z: 0.1431514}
     m_Extent: {x: 0.054597553, y: 0.017521858, z: 0.018139064}
   m_DirtyAABB: 0
+--- !u!135 &207996273
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4233059508721334822}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5
+  m_Center: {x: 0.0021531545, y: 1.6601158, z: 0.07002199}
+--- !u!114 &207996272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4233059508721334822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a2888d0438b72f47980308a0a383a1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4287849459572744560
 GameObject:
   m_ObjectHideFlags: 0
@@ -2454,7 +2481,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7645941506315973857}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc6adec1c4e202b4299dbc486f4eec19, type: 3}
   m_Name: 
