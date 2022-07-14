@@ -45,9 +45,19 @@ public class Health : MonoBehaviour
         }
         if (!enemyMovement)
         {
-            HPBar.fillAmount = (float)currentHealth / (float)maxHealth;
+            RefillHPBar();
         }
     }
+
+    public void RefillHPBar()
+    {
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        HPBar.fillAmount = (float)currentHealth / (float)maxHealth;
+    }
+
     private void Death()
     {
         animator.SetTrigger("Death");

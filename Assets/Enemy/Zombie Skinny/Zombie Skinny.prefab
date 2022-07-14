@@ -403,7 +403,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.5, z: 1.11}
+  m_Size: {x: 1, y: 0.5, z: 1.11}
   m_Center: {x: 0, y: 1.33, z: 0.44}
 --- !u!82 &7176142281832849250
 AudioSource:
@@ -530,9 +530,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   zombieSounds:
-  - {fileID: 8300000, guid: 821b6440d8e269c40b5a0eb8a44a079d, type: 3}
-  - {fileID: 8300000, guid: 5ce6bb262e363834db2b5cdef8a21155, type: 3}
-  - {fileID: 8300000, guid: a4366158371c9514cae30cfff454dcb2, type: 3}
+  - {fileID: 8300000, guid: 27b98a8c68f991b408c5c6afff25358c, type: 3}
+  - {fileID: 8300000, guid: 4fb45f9472f5e554c82a5a9c7ba4c739, type: 3}
+  - {fileID: 8300000, guid: fc1882cb9cb0d474c95537bbdb4c48bd, type: 3}
   damageForce: 1
   canWalk: 1
 --- !u!195 &8280688613822296646

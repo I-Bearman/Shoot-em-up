@@ -68,5 +68,12 @@ public class Shooting : MonoBehaviour
             ammo += 50;
             ammoText.text = $"Ammo:{ammo}";
         }
+        if (other.gameObject.layer == 10)
+        {
+            Destroy(other.gameObject);
+            Health health = GetComponent<Health>();
+            health.currentHealth++;
+            health.RefillHPBar();
+        }
     }
 }

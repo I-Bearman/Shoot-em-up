@@ -300,7 +300,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Zombie Fat
+  m_Name: Zombie Atletic
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Attack
@@ -430,7 +430,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Walking slow
+  m_Name: Walking fast
   m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
@@ -446,7 +446,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: 959e9fb6d0226fc429a5c3797e8fd461, type: 3}
+  m_Motion: {fileID: -203655887218126122, guid: be6705bca1a591340b29daf26f4962e9, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -460,7 +460,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Punch
-  m_Speed: 1
+  m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 147819071713347723}
@@ -475,7 +475,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: cc744633d7934f745a4e5f394a941725, type: 3}
+  m_Motion: {fileID: -203655887218126122, guid: 3aeb2f8a834183c4da48db4b96b27d73, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

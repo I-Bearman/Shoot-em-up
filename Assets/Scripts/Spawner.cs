@@ -35,18 +35,25 @@ public class Spawner : MonoBehaviour
                 enemyMovement.zombieSounds[0] = enemySounds[Random.Range(0, 4)];
                 enemyMovement.zombieSounds[1] = enemySounds[Random.Range(4, 9)];
                 enemyMovement.zombieSounds[2] = enemySounds[Random.Range(9, 13)];
-            Again:
-                Vector3 pos = new Vector3(Random.Range(platform.position.x - platRadiusX, platform.position.x + platRadiusX), platform.position.y + 1, Random.Range(platform.position.z - platRadiusZ, platform.position.z + platRadiusZ));
-                if (Vector3.Distance(hero.position, pos) < distanceToEnemiesSpawn)
-                {
-                    goto Again;
-                }
-                GameObject enemyObject = Instantiate(enemies[i].prefab, pos, Quaternion.identity);
+            
+                GameObject enemyObject = Instantiate(enemies[i].prefab);
                 enemiesOnScreen.Add(enemyObject);
                 CreateSoundList(enemyObject);
-                //enemyObject.SetActive(false);
+                enemyObject.SetActive(false);
             }
         }
+    }
+
+    private void EnemyPlacement(int enemyNum)
+    {
+    Again:
+        Vector3 pos = new Vector3(Random.Range(platform.position.x - platRadiusX, platform.position.x + platRadiusX), platform.position.y + 1, Random.Range(platform.position.z - platRadiusZ, platform.position.z + platRadiusZ));
+        if (Vector3.Distance(hero.position, pos) < distanceToEnemiesSpawn)
+        {
+            goto Again;
+        }
+        enemiesOnScreen[enemyNum].transform.position = pos;
+        enemiesOnScreen[enemyNum].SetActive(true);
     }
 
     private void CreateSoundList(GameObject gameObject)
