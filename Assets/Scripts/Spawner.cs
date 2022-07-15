@@ -2,13 +2,12 @@ using UnityEngine;
 using System.Collections.Generic;
 
 [System.Serializable]
-
 public class Enemy
 {
-    public int count;
+    public int countAtFirstWave;
     public GameObject prefab;
 }
-
+[System.Serializable]
 public class Boxes
 {
     public int count;
@@ -17,14 +16,19 @@ public class Boxes
 
 public class Spawner : MonoBehaviour
 {
+    [Header("Main")]
     [SerializeField] private Transform hero;
     [SerializeField] private Transform platform;
     [SerializeField] private float distanceToEnemiesSpawn;
-    [SerializeField] private int rateOfWaves;
     [SerializeField] private List<Enemy> enemies;
+    [SerializeField] private List<Boxes> boxes;
     [SerializeField] private List<AudioClip> enemySounds;
     [SerializeField] private List<GameObject> enemiesOnScreen;
-    [SerializeField] private List<Boxes> boxes;
+
+    [Header("Waves")]
+    [SerializeField] private int countOfWaves;
+    [SerializeField] private float denominatorOfProgression;
+    private int[] summOfProgression;
 
     private float platRadiusX;
     private float platRadiusZ;
@@ -36,7 +40,7 @@ public class Spawner : MonoBehaviour
 
         for (int i = 0; i < enemies.Count; i++)
         {
-            for (int j = 0; j < enemies[i].count; j++)
+            for (int j = 0; j < enemies[i].countAtFirstWave; j++)
             {
                 EnemyMovement enemyMovement = enemies[i].prefab.GetComponent<EnemyMovement>();
                 enemyMovement.target = hero;
@@ -48,6 +52,18 @@ public class Spawner : MonoBehaviour
                 enemiesOnScreen.Add(enemyObject);
                 CreateSoundList(enemyObject);
                 //enemyObject.SetActive(false);
+            }
+            summOfProgression[i] = Mathf.RoundToInt(enemies[i].countAtFirstWave * ((1 - Mathf.Pow(denominatorOfProgression, countOfWaves)) / (1 - denominatorOfProgression)));
+            Debug.Log(summOfProgression[i]);
+        }
+
+        for (int i = 0; i < boxes.Count; i++)
+        {
+            for (int j = 0; j < boxes[i].count; j++)
+            {
+                Vector3 pos = Replacement();
+                pos += Vector3.down;
+                Instantiate(boxes[i].prefab, pos, Quaternion.identity);
             }
         }
     }

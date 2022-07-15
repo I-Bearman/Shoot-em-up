@@ -61,16 +61,17 @@ public class Health : MonoBehaviour
     private void Death()
     {
         animator.SetTrigger("Death");
+        gameObject.layer = 0;
         if (enemyMovement)
         {
-            gameObject.layer = 0;
             enemyMovement.enabled = false;
             int newScore = ++GameData.Instance.currentScore;
             GameData.Instance.scoreText.text = $"Score: {newScore}";
         }
-        else if (TryGetComponent(out PlayerMovement playerMovement))
+        else if (TryGetComponent(out PlayerInput playerInput))
         {
-            playerMovement.enabled = false;
+            playerInput.enabled = false;
+            GetComponent<Rigidbody>().isKinematic = true;
         }
         collider.enabled = false;
     }
