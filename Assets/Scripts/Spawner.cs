@@ -53,8 +53,6 @@ public class Spawner : MonoBehaviour
                 CreateSoundList(enemyObject);
                 //enemyObject.SetActive(false);
             }
-            summOfProgression[i] = Mathf.RoundToInt(enemies[i].countAtFirstWave * ((1 - Mathf.Pow(denominatorOfProgression, countOfWaves)) / (1 - denominatorOfProgression)));
-            Debug.Log(summOfProgression[i]);
         }
 
         for (int i = 0; i < boxes.Count; i++)
@@ -77,6 +75,15 @@ public class Spawner : MonoBehaviour
             goto Again;
         }
         return pos;
+    }
+
+    private void Start()
+    {
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            summOfProgression[i] = Mathf.RoundToInt(enemies[i].countAtFirstWave * ((1f - Mathf.Pow(denominatorOfProgression, countOfWaves)) / (1f - denominatorOfProgression)));
+            Debug.Log(summOfProgression[i]);
+        }
     }
 
     private void CreateSoundList(GameObject gameObject)
