@@ -3224,7 +3224,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1247273486}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13b5b9a53d331c64e85dea596281968e, type: 3}
   m_Name: 
@@ -3234,11 +3234,12 @@ MonoBehaviour:
   - {fileID: 5849486937033136731}
   - {fileID: 5849486937033136732}
   currentScore: 0
-  currentRound: 0
+  currentWave: 0
   musicVol: 1
   soundsVol: 1
-  hightScore: 100
+  hightScore: 0
   scoreText: {fileID: 886787595}
+  waveNumText: {fileID: 1655754697}
 --- !u!114 &1247273490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3282,6 +3283,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: fc1882cb9cb0d474c95537bbdb4c48bd, type: 3}
   enemiesOnScreen: []
   countOfWaves: 5
+  timeToNextWave: 60
   denominatorOfProgression: 1.2
 --- !u!1001 &1283281752
 PrefabInstance:

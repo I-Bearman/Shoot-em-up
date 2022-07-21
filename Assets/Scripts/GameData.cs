@@ -17,7 +17,7 @@ public class GameData : MonoBehaviour
     public static GameData Instance;
 
     public int currentScore = 0;
-    public int currentRound = 0;
+    public int currentWave = 0;
 
     public float musicVol = 1;
     public float soundsVol = 1;
@@ -25,6 +25,7 @@ public class GameData : MonoBehaviour
     public int hightScore;
 
     public TMP_Text scoreText;
+    public TMP_Text waveNumText;
 
     private void Awake()
     {
