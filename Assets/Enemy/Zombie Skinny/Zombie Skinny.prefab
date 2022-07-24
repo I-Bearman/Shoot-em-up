@@ -225,7 +225,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 87d983889b1c6bb4fb5c42b5cd730b7b, type: 3}
       propertyPath: m_Name
-      value: Zombie
+      value: Zombie Skinny
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 87d983889b1c6bb4fb5c42b5cd730b7b, type: 3}
       propertyPath: m_Layer
@@ -514,7 +514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HPBar: {fileID: 0}
-  currentHealth: 2
+  currentHealth: 1
   isAlive: 1
 --- !u!114 &3538041858480923626
 MonoBehaviour:
@@ -530,9 +530,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   zombieSounds:
-  - {fileID: 8300000, guid: 821b6440d8e269c40b5a0eb8a44a079d, type: 3}
-  - {fileID: 8300000, guid: 24b617db03a924c4ab49c13feb18c10d, type: 3}
-  - {fileID: 8300000, guid: fc1882cb9cb0d474c95537bbdb4c48bd, type: 3}
+  - {fileID: 8300000, guid: 27b98a8c68f991b408c5c6afff25358c, type: 3}
+  - {fileID: 8300000, guid: 9f8a1e6741a342647b9c0055e1e0a7b8, type: 3}
+  - {fileID: 8300000, guid: 0547b940dba4d964e9e447af1dc0759a, type: 3}
   damageForce: 1
   canWalk: 1
 --- !u!195 &8280688613822296646

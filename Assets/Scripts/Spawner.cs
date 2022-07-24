@@ -28,7 +28,7 @@ public class Spawner : MonoBehaviour
 
     [Header("Waves")]
     [SerializeField] private int countOfWaves;
-    [SerializeField] private int timeToNextWave;
+    [SerializeField] private float timeToNextWave;
     [SerializeField] private float denominatorOfProgression;
     private int[][] termOfProgression;
     private int[] summOfProgression;
@@ -66,8 +66,7 @@ public class Spawner : MonoBehaviour
                 enemyMovement.zombieSounds[0] = enemySounds[Random.Range(0, 4)];
                 enemyMovement.zombieSounds[1] = enemySounds[Random.Range(4, 9)];
                 enemyMovement.zombieSounds[2] = enemySounds[Random.Range(9, 13)];
-                Vector3 pos = Replacement();
-                GameObject enemyObject = Instantiate(enemies[i].prefab, pos, Quaternion.identity);
+                GameObject enemyObject = Instantiate(enemies[i].prefab);
                 enemiesOnScreen.Add(enemyObject);
                 CreateSoundList(enemyObject);
                 enemyObject.SetActive(false);
@@ -105,20 +104,27 @@ public class Spawner : MonoBehaviour
 
     private void ActivationOfWaves()
     {
-        for (int i = 0; i < enemies.Count; i++)
-        {
-            /*for (int j = 0; j < termOfProgression[i]; j++)
-            {
-                enemiesOnScreen[]
-            }*/
-        }
-    }
+        /*        for (int i = 0; i < enemies.Count; i++)
+                {
+
+                    for (int j = 0; j < termOfProgression[i]; j++)
+                    {
+                        Vector3 pos = Replacement();
+
+                        enemiesOnScreen[]
+                    }
+                }
+        */
+        WaitWave();
+   }
 
     private IEnumerator WaitWave()
     {
+        float timeLeft = timeToNextWave;
+        timeLeft -= Time.deltaTime;
+        GameData.Instance.timeToNextWaveText.text = Mathf.FloorToInt(timeLeft).ToString();
         int newWaveNum = ++GameData.Instance.currentWave;
         GameData.Instance.waveNumText.text = $"Wave: {newWaveNum}";
         yield return new WaitForSeconds(timeToNextWave);
-
     }
 }

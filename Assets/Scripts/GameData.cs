@@ -26,6 +26,7 @@ public class GameData : MonoBehaviour
 
     public TMP_Text scoreText;
     public TMP_Text waveNumText;
+    public TMP_Text timeToNextWaveText;
 
     private void Awake()
     {
