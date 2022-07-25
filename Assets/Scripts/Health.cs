@@ -1,10 +1,12 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.AI;
 
 public class Health : MonoBehaviour
 {
     [SerializeField] Image HPBar;
+    [SerializeField] int pointsForKill;
     public int currentHealth;
     public bool isAlive = true;
     private Animator animator;
@@ -55,7 +57,7 @@ public class Health : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
-        HPBar.fillAmount = (float)currentHealth / (float)maxHealth;
+        HPBar.fillAmount = (float)currentHealth / maxHealth;
     }
 
     private void Death()
@@ -65,7 +67,8 @@ public class Health : MonoBehaviour
         if (enemyMovement)
         {
             enemyMovement.enabled = false;
-            int newScore = ++GameData.Instance.currentScore;
+            GetComponent<NavMeshAgent>().isStopped = true;
+            int newScore = GameData.Instance.currentScore + pointsForKill;
             GameData.Instance.scoreText.text = $"Score: {newScore}";
         }
         else if (TryGetComponent(out PlayerInput playerInput))

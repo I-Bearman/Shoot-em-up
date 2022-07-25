@@ -30,36 +30,55 @@ public class Spawner : MonoBehaviour
     [SerializeField] private int countOfWaves;
     [SerializeField] private float timeToNextWave;
     [SerializeField] private float denominatorOfProgression;
-    private int[][] termOfProgression;
-    private int[] summOfProgression;
+    private int[] termOfProgression;
+    private int previousSummOfProgression = 0;
 
     private float platRadiusX;
     private float platRadiusZ;
+
+    private float timeLeft;
 
     private void Awake()
     {
         platRadiusX = platform.localScale.x * 5;
         platRadiusZ = platform.localScale.z * 5;
 
-        termOfProgression = new int[enemies.Count][];
-        summOfProgression = new int[enemies.Count];
+        //Start of geometrical progresion of zombie's waves
+        termOfProgression = new int[enemies.Count];
         for (int i = 0; i < enemies.Count; i++)
         {
-            termOfProgression[i] = new int[countOfWaves];
-            termOfProgression[i][0] = enemies[i].countAtFirstWave;
-            summOfProgression[i] = termOfProgression[i][0];
-            for (int j = 1; j < countOfWaves; j++)
-            {
-                termOfProgression[i][j] = Mathf.RoundToInt(termOfProgression[i][j - 1] * denominatorOfProgression);
-                summOfProgression[i] += termOfProgression[i][j];
-            }
+            termOfProgression[i] = enemies[i].countAtFirstWave;
         }
 
+        CreateEnemies();
+        for (int i = 0; i < enemiesOnScreen.Count; i++)
+        {
+            Replacement(enemiesOnScreen[i]);
+            enemiesOnScreen[i].SetActive(true);
+        }
 
-        //Enemies create and replacement
+        //Boxes create and replacement
+        for (int i = 0; i < boxes.Count; i++)
+        {
+            for (int j = 0; j < boxes[i].count; j++)
+            {
+                GameObject box = Instantiate(boxes[i].prefab);
+                Replacement(box);
+                box.transform.position += Vector3.down; //костыль
+            }
+        }
+    }
+
+    private void Start()
+    {
+        StartCoroutine(WaveTimer());
+    }
+
+    private void CreateEnemies()
+    {
         for (int i = 0; i < enemies.Count; i++)
         {
-            for (int j = 0; j < summOfProgression[i]; j++)
+            for (int j = 0; j < termOfProgression[i]; j++)
             {
                 EnemyMovement enemyMovement = enemies[i].prefab.GetComponent<EnemyMovement>();
                 enemyMovement.target = hero;
@@ -72,20 +91,9 @@ public class Spawner : MonoBehaviour
                 enemyObject.SetActive(false);
             }
         }
-
-        //Boxes create and replacement
-        for (int i = 0; i < boxes.Count; i++)
-        {
-            for (int j = 0; j < boxes[i].count; j++)
-            {
-                Vector3 pos = Replacement();
-                pos += Vector3.down;
-                Instantiate(boxes[i].prefab, pos, Quaternion.identity);
-            }
-        }
     }
 
-    private Vector3 Replacement()
+    private void Replacement(GameObject gameObject)
     {
         Again:
         Vector3 pos = new Vector3(Random.Range(platform.position.x - platRadiusX, platform.position.x + platRadiusX), platform.position.y + 1, Random.Range(platform.position.z - platRadiusZ, platform.position.z + platRadiusZ));
@@ -93,7 +101,7 @@ public class Spawner : MonoBehaviour
         {
             goto Again;
         }
-        return pos;
+        gameObject.transform.position = pos;
     }
 
     private void CreateSoundList(GameObject gameObject)
@@ -102,29 +110,32 @@ public class Spawner : MonoBehaviour
         GameData.Instance.sounds.Add(audioSource);
     }
 
-    private void ActivationOfWaves()
+    private IEnumerator WaveTimer()
     {
-        /*        for (int i = 0; i < enemies.Count; i++)
-                {
+        Again:
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            previousSummOfProgression += termOfProgression[i];
+            termOfProgression[i] = Mathf.RoundToInt(termOfProgression[i] * denominatorOfProgression);
+        }
+        CreateEnemies();
 
-                    for (int j = 0; j < termOfProgression[i]; j++)
-                    {
-                        Vector3 pos = Replacement();
-
-                        enemiesOnScreen[]
-                    }
-                }
-        */
-        WaitWave();
-   }
-
-    private IEnumerator WaitWave()
-    {
-        float timeLeft = timeToNextWave;
-        timeLeft -= Time.deltaTime;
-        GameData.Instance.timeToNextWaveText.text = Mathf.FloorToInt(timeLeft).ToString();
+        timeLeft = timeToNextWave;
+        while (timeLeft > 0)
+        {
+            timeLeft -= Time.deltaTime;
+            GameData.Instance.timeToNextWaveText.text = $"Time to next Wave: {Mathf.FloorToInt(timeLeft)}";
+            yield return null;
+        }
         int newWaveNum = ++GameData.Instance.currentWave;
         GameData.Instance.waveNumText.text = $"Wave: {newWaveNum}";
-        yield return new WaitForSeconds(timeToNextWave);
+
+        for (int i = previousSummOfProgression; i < enemiesOnScreen.Count; i++)
+        {
+            Replacement(enemiesOnScreen[i]);
+            enemiesOnScreen[i].SetActive(true);
+        }
+
+        goto Again;
     }
 }

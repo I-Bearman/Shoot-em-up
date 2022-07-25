@@ -45,9 +45,9 @@ public class EnemyMovement : MonoBehaviour
     {
         if (other == targetCollider)
         {
-            canPunch = true;
             animator.SetBool("Walk", false);
             Attack();
+            canPunch = true;
         }
     }
     private void OnTriggerExit(Collider other)
@@ -76,6 +76,7 @@ public class EnemyMovement : MonoBehaviour
             if (raycastHit[i].transform.gameObject.layer == 6)
             {
                 raycastHit[i].transform.gameObject.GetComponent<Health>().TakeDamage(damageForce);
+                break;
             }
         }
     }
