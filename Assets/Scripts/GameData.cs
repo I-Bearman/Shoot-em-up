@@ -36,20 +36,15 @@ public class GameData : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        ChangeMusicVol();
-        ChangeSoundsVol();
-    }
-
     public void SaveData()
     {
         if (currentScore > hightScore)
         {
-            PlayerPrefs.SetInt("Score", currentScore);
-            PlayerPrefs.SetFloat("MusicVolume", musicVol);
-            PlayerPrefs.SetFloat("SoundsVolume", soundsVol);
+            hightScore = currentScore;
         }
+        PlayerPrefs.SetInt("Score", hightScore);
+        PlayerPrefs.SetFloat("MusicVolume", musicVol);
+        PlayerPrefs.SetFloat("SoundsVolume", soundsVol);
     }
     public void LoadData()
     {

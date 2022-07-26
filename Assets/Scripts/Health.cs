@@ -9,6 +9,7 @@ public class Health : MonoBehaviour
     [SerializeField] int pointsForKill;
     public int currentHealth;
     public bool isAlive = true;
+    [SerializeField] GameObject DeathPanel;
     private Animator animator;
     private new Collider collider;
     private AudioSource audioSource;
@@ -68,13 +69,14 @@ public class Health : MonoBehaviour
         {
             enemyMovement.enabled = false;
             GetComponent<NavMeshAgent>().isStopped = true;
-            int newScore = GameData.Instance.currentScore + pointsForKill;
-            GameData.Instance.scoreText.text = $"Score: {newScore}";
+            GameData.Instance.currentScore += pointsForKill;
+            GameData.Instance.scoreText.text = $"Score: {GameData.Instance.currentScore}";
         }
         else if (TryGetComponent(out PlayerInput playerInput))
         {
             playerInput.enabled = false;
             GetComponent<Rigidbody>().isKinematic = true;
+            StartCoroutine(DeathPanelActivation());
         }
         collider.enabled = false;
     }
@@ -88,5 +90,11 @@ public class Health : MonoBehaviour
             audioSource.PlayOneShot(enemyMovement.zombieSounds[0]);
             goto Again;
         }
+    }
+    IEnumerator DeathPanelActivation()
+    {
+        yield return new WaitForSeconds(3);
+        Time.timeScale = 0;
+        DeathPanel.SetActive(true);
     }
 }

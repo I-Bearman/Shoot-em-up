@@ -13,6 +13,8 @@ public class MainMenuView : MonoBehaviour
     private void Start()
     {
         GameData.Instance.LoadData();
+        GameData.Instance.ChangeMusicVol();
+        GameData.Instance.ChangeSoundsVol();
         hightScoreText.text = $"Hight score: {GameData.Instance.hightScore}";
     }
 

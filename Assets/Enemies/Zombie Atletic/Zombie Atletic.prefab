@@ -2448,6 +2448,7 @@ MonoBehaviour:
   pointsForKill: 30
   currentHealth: 3
   isAlive: 1
+  DeathPanel: {fileID: 0}
 --- !u!114 &8813800070942271185
 MonoBehaviour:
   m_ObjectHideFlags: 0

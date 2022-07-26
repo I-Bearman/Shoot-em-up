@@ -1960,6 +1960,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HPBar: {fileID: 0}
+  pointsForKill: 0
   currentHealth: 3
   isAlive: 1
 --- !u!114 &5849486937033136732
@@ -1981,7 +1982,10 @@ MonoBehaviour:
   damageForce: 1
   rateOfFire: 0.5
   shootSound: {fileID: 8300000, guid: 6dd7024f00606b44eb5884197a66a893, type: 3}
-  misfireSound: {fileID: 0}
+  misfireSound: {fileID: 8300000, guid: 005c35f34be373545898b6ac931edce2, type: 3}
+  boxesSounds:
+  - {fileID: 8300000, guid: 560b3ccf494468644a9068fb2ae8273c, type: 3}
+  - {fileID: 8300000, guid: 97db972e724b1fa49b18de2cd900a17d, type: 3}
 --- !u!82 &7551373532432866588
 AudioSource:
   m_ObjectHideFlags: 0

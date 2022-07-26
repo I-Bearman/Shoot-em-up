@@ -12,6 +12,7 @@ public class Shooting : MonoBehaviour
     [SerializeField] private float rateOfFire;
     [SerializeField] private AudioClip shootSound;
     [SerializeField] private AudioClip misfireSound;
+    [SerializeField] private AudioClip[] boxesSounds = new AudioClip[2];
     private PlayerMovement playerMovement;
     private AudioSource audioSource;
     private Animator animator;
@@ -48,7 +49,7 @@ public class Shooting : MonoBehaviour
             }
             else
             {
-                //misfireSound.Play();
+                audioSource.PlayOneShot(misfireSound);
                 canShoot = false;
                 StartCoroutine(WaitShoot());
             }
@@ -67,6 +68,7 @@ public class Shooting : MonoBehaviour
             Destroy(other.gameObject);
             ammo += 50;
             ammoText.text = $"Ammo:{ammo}";
+            audioSource.PlayOneShot(boxesSounds[0]);
         }
         if (other.gameObject.layer == 10)
         {
@@ -74,6 +76,7 @@ public class Shooting : MonoBehaviour
             Health health = GetComponent<Health>();
             health.currentHealth++;
             health.RefillHPBar();
+            audioSource.PlayOneShot(boxesSounds[1]);
         }
     }
 }

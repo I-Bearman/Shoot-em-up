@@ -597,6 +597,7 @@ MonoBehaviour:
   pointsForKill: 20
   currentHealth: 2
   isAlive: 1
+  DeathPanel: {fileID: 0}
 --- !u!114 &8891458991683710921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -626,7 +627,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 300
