@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     {
         float dx = xMouse - Screen.width * 0.5f;
         float dy = yMouse - Screen.height * 0.5f;
-        lookDirection = new Vector3(dx, transform.position.y, dy);
+        lookDirection = new Vector3(dx, 0, dy);
         transform.LookAt(lookDirection);
     }
 

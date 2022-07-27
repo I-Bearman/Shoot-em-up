@@ -96,5 +96,7 @@ public class Health : MonoBehaviour
         yield return new WaitForSeconds(3);
         Time.timeScale = 0;
         DeathPanel.SetActive(true);
+        QuickMenu.Instance.DeathScore();
+        GameData.Instance.SaveData();
     }
 }

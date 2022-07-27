@@ -2,12 +2,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine.UI;
+using TMPro;
 
 public class QuickMenu : MonoBehaviour
 {
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject loadingPanel;
     [SerializeField] private Slider loadingSlider;
+    [SerializeField] private TMP_Text deathScoreText;
+    [SerializeField] private GameObject newHightText;
     public static QuickMenu Instance;
 
     private void Awake()
@@ -63,4 +66,12 @@ public class QuickMenu : MonoBehaviour
         }
     }
 
+    public void DeathScore()
+    {
+        deathScoreText.text = GameData.Instance.scoreText.text;
+        if (GameData.Instance.currentScore > GameData.Instance.hightScore)
+        {
+            newHightText.SetActive(true);
+        }
+    }
 }
