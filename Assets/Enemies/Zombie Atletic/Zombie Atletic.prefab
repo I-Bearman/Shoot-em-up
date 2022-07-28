@@ -2464,8 +2464,8 @@ MonoBehaviour:
   target: {fileID: 0}
   zombieSounds:
   - {fileID: 8300000, guid: 27b98a8c68f991b408c5c6afff25358c, type: 3}
-  - {fileID: 8300000, guid: 9f8a1e6741a342647b9c0055e1e0a7b8, type: 3}
-  - {fileID: 8300000, guid: 0547b940dba4d964e9e447af1dc0759a, type: 3}
+  - {fileID: 8300000, guid: 5ce6bb262e363834db2b5cdef8a21155, type: 3}
+  - {fileID: 8300000, guid: fc1882cb9cb0d474c95537bbdb4c48bd, type: 3}
   damageForce: 2
   canWalk: 1
 --- !u!195 &7364661921710432571
@@ -2478,7 +2478,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3
+  m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 300
