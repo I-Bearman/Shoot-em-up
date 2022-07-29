@@ -41,7 +41,6 @@ public class PlayerMovement : MonoBehaviour
             angle *= Mathf.Deg2Rad;
             animator.SetFloat("Speed for_back", rb.velocity.magnitude * Mathf.Cos(angle));
             animator.SetFloat("Speed right_left", rb.velocity.magnitude * Mathf.Sin(angle));
-
         }
         else
         {

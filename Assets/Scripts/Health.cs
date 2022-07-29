@@ -95,6 +95,10 @@ public class Health : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         Time.timeScale = 0;
+        for (int i = 0; i < GameData.Instance.sounds.Count; i++)
+        {
+            GameData.Instance.sounds[i].Pause();
+        }
         DeathPanel.SetActive(true);
         QuickMenu.Instance.DeathScore();
         GameData.Instance.SaveData();
