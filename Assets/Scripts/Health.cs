@@ -7,14 +7,18 @@ public class Health : MonoBehaviour
 {
     [SerializeField] Image HPBar;
     [SerializeField] int pointsForKill;
-    public int currentHealth;
-    public bool isAlive = true;
     [SerializeField] GameObject DeathPanel;
+
+    [SerializeField] private int currentHealth;
     private Animator animator;
     private new Collider collider;
     private AudioSource audioSource;
     private EnemyMovement enemyMovement;
     private int maxHealth;
+
+    public int CurrentHealth => currentHealth;
+    public bool IsAlive => currentHealth > 0;
+
 
     private void Awake()
     {
@@ -36,20 +40,23 @@ public class Health : MonoBehaviour
     {
         if (enemyMovement)
         {
-            audioSource.PlayOneShot(enemyMovement.zombieSounds[2]);
+            audioSource.PlayOneShot(enemyMovement.ZombieSounds[2]);
         }
         animator.SetTrigger("TakeDamage");
         currentHealth -= dmg;
         if(currentHealth <= 0)
         {
             currentHealth = 0;
-            isAlive = false;
             Death();
         }
         if (!enemyMovement)
         {
             RefillHPBar();
         }
+    }
+    public void Healing()
+    {
+        currentHealth++;
     }
 
     public void RefillHPBar()
@@ -69,8 +76,8 @@ public class Health : MonoBehaviour
         {
             enemyMovement.enabled = false;
             GetComponent<NavMeshAgent>().isStopped = true;
-            GameData.Instance.currentScore += pointsForKill;
-            GameData.Instance.scoreText.text = $"Score: {GameData.Instance.currentScore}";
+            GameData.Instance.IncreaseScore(pointsForKill);
+            GameData.Instance.ScoreText.text = $"Score: {GameData.Instance.CurrentScore}";
         }
         else if (TryGetComponent(out PlayerInput playerInput))
         {
@@ -85,9 +92,9 @@ public class Health : MonoBehaviour
     {
         Again:
         yield return new WaitForSeconds(Random.Range(5f,30f));
-        if(isAlive)
+        if(IsAlive)
         {
-            audioSource.PlayOneShot(enemyMovement.zombieSounds[0]);
+            audioSource.PlayOneShot(enemyMovement.ZombieSounds[0]);
             goto Again;
         }
     }
@@ -95,9 +102,9 @@ public class Health : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         Time.timeScale = 0;
-        for (int i = 0; i < GameData.Instance.sounds.Count; i++)
+        for (int i = 0; i < GameData.Instance.Sounds.Count; i++)
         {
-            GameData.Instance.sounds[i].Pause();
+            GameData.Instance.Sounds[i].Pause();
         }
         DeathPanel.SetActive(true);
         QuickMenu.Instance.DeathScore();

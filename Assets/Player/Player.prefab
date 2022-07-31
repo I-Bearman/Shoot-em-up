@@ -1946,7 +1946,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   runSound: {fileID: 5937788687184316422}
-  lookDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &5849486938600441008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1961,9 +1960,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HPBar: {fileID: 0}
   pointsForKill: 0
-  currentHealth: 3
-  isAlive: 1
   DeathPanel: {fileID: 0}
+  currentHealth: 3
 --- !u!114 &5849486937033136732
 MonoBehaviour:
   m_ObjectHideFlags: 0

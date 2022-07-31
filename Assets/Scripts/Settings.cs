@@ -8,20 +8,20 @@ public class Settings : MonoBehaviour
 
     private void OnEnable()
     {
-        musicSlider.value = GameData.Instance.musicVol;
-        soundsSlider.value = GameData.Instance.soundsVol;
+        musicSlider.value = GameData.Instance.MusicVol;
+        soundsSlider.value = GameData.Instance.SoundsVol;
     }
     
     private void Update()
     {
-        if(GameData.Instance.musicVol != musicSlider.value)
+        if(GameData.Instance.MusicVol != musicSlider.value)
         {
-            GameData.Instance.musicVol = musicSlider.value;
+            GameData.Instance.ChangeMusicVol(musicSlider.value);
             GameData.Instance.ChangeMusicVol();
         }
-        if (GameData.Instance.soundsVol != soundsSlider.value)
+        if (GameData.Instance.SoundsVol != soundsSlider.value)
         {
-            GameData.Instance.soundsVol = soundsSlider.value;
+            GameData.Instance.ChangeSoundsVol(soundsSlider.value);
             GameData.Instance.ChangeSoundsVol();
         }
 

@@ -12,21 +12,31 @@ public class GameData : MonoBehaviour
     #endregion
 
     [SerializeField] private AudioSource music;
-    public List<AudioSource> sounds;
+    [SerializeField] private List<AudioSource> sounds;
+    [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private TMP_Text waveNumText;
+    [SerializeField] private TMP_Text timeToNextWaveText;
 
     public static GameData Instance;
 
-    public int currentScore = 0;
-    public int currentWave = 0;
+    private int currentScore = 0;
+    private int currentWave = 0;
 
-    public float musicVol = 1;
-    public float soundsVol = 1;
+    private float musicVol = 1;
+    private float soundsVol = 1;
 
-    public int hightScore;
+    private int hightScore;
 
-    public TMP_Text scoreText;
-    public TMP_Text waveNumText;
-    public TMP_Text timeToNextWaveText;
+    public int CurrentScore => currentScore;
+    public int CurrentWave => currentWave;
+    public List<AudioSource> Sounds => sounds;
+    public float MusicVol => musicVol;
+    public float SoundsVol => soundsVol;
+    public int HightScore => hightScore;
+    public TMP_Text ScoreText => scoreText;
+    public TMP_Text WaveNumText => waveNumText;
+    public TMP_Text TimeToNextWaveText => timeToNextWaveText;
+
 
     private void Awake()
     {
@@ -34,6 +44,23 @@ public class GameData : MonoBehaviour
         {
             Instance = this;
         }
+    }
+
+    public void IncreaseScore(int additive)
+    {
+        currentScore += additive;
+    }
+    public void IncreaseWave()
+    {
+        currentWave++;
+    }
+    public void ChangeMusicVol(float newValue)
+    {
+        musicVol = newValue;
+    }
+    public void ChangeSoundsVol(float newValue)
+    {
+        soundsVol = newValue;
     }
 
     public void SaveData()

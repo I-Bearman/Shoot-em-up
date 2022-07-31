@@ -4,9 +4,11 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private AudioSource runSound;
-    public Vector3 lookDirection;
+    private Vector3 lookDirection;
     private Rigidbody rb;
     private Animator animator;
+
+    public Vector3 LookDirection => lookDirection;
 
     private void Start()
     {

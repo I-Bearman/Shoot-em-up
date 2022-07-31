@@ -38,9 +38,8 @@ public class Shooting : MonoBehaviour
                 ammo--;
                 ammoText.text = $"Ammo:{ammo}";
                 audioSource.PlayOneShot(shootSound);
-                Ray ray = new Ray(gunpoint.position, playerMovement.lookDirection.normalized * maxDistance);
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit, maxDistance) && hit.transform.gameObject.layer == 7)
+                Ray ray = new Ray(gunpoint.position, playerMovement.LookDirection.normalized * maxDistance);
+                if (Physics.Raycast(ray, out RaycastHit hit, maxDistance) && hit.transform.gameObject.layer == 7)
                 {
                     hit.transform.gameObject.GetComponent<Health>().TakeDamage(damageForce);
                 }
@@ -74,7 +73,7 @@ public class Shooting : MonoBehaviour
         {
             Destroy(other.gameObject);
             Health health = GetComponent<Health>();
-            health.currentHealth++;
+            health.Healing();
             health.RefillHPBar();
             audioSource.PlayOneShot(boxesSounds[1]);
         }

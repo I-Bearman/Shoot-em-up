@@ -1,18 +1,20 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyMovement : MonoBehaviour
 {
-    public Transform target;
-    public AudioClip[] zombieSounds = new AudioClip[3];
+    [SerializeField] private Transform target;
+    [SerializeField] private AudioClip[] zombieSounds = new AudioClip[3];
+    [SerializeField] private int damageForce;
     private Collider targetCollider;
     private NavMeshAgent navMeshAgent;
     private Animator animator;
     private AudioSource audioSource;
-    public int damageForce;
-    public bool canWalk = true;
     private bool canPunch = false;
+
+    public AudioClip[] ZombieSounds => zombieSounds;
 
     private void Awake()
     {
@@ -39,6 +41,14 @@ public class EnemyMovement : MonoBehaviour
         {
             animator.SetBool("Walk", true);
         }
+    }
+
+    public void Prepare(Transform hero, List<AudioClip> enemySounds)
+    {
+        target = hero;
+        zombieSounds[0] = enemySounds[Random.Range(0, 4)];
+        zombieSounds[1] = enemySounds[Random.Range(4, 9)];
+        zombieSounds[2] = enemySounds[Random.Range(9, 13)];
     }
 
     private void OnTriggerEnter(Collider other)

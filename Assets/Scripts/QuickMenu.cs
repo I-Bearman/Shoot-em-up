@@ -68,8 +68,8 @@ public class QuickMenu : MonoBehaviour
 
     public void DeathScore()
     {
-        deathScoreText.text = GameData.Instance.scoreText.text;
-        if (GameData.Instance.currentScore > GameData.Instance.hightScore)
+        deathScoreText.text = GameData.Instance.ScoreText.text;
+        if (GameData.Instance.CurrentScore > GameData.Instance.HightScore)
         {
             newHightText.SetActive(true);
         }

@@ -81,10 +81,7 @@ public class Spawner : MonoBehaviour
             for (int j = 0; j < termOfProgression[i]; j++)
             {
                 EnemyMovement enemyMovement = enemies[i].prefab.GetComponent<EnemyMovement>();
-                enemyMovement.target = hero;
-                enemyMovement.zombieSounds[0] = enemySounds[Random.Range(0, 4)];
-                enemyMovement.zombieSounds[1] = enemySounds[Random.Range(4, 9)];
-                enemyMovement.zombieSounds[2] = enemySounds[Random.Range(9, 13)];
+                enemyMovement.Prepare(hero, enemySounds);
                 GameObject enemyObject = Instantiate(enemies[i].prefab);
                 enemiesOnScreen.Add(enemyObject);
                 CreateSoundList(enemyObject);
@@ -107,7 +104,7 @@ public class Spawner : MonoBehaviour
     private void CreateSoundList(GameObject gameObject)
     {
         AudioSource audioSource = gameObject.GetComponent<AudioSource>();
-        GameData.Instance.sounds.Add(audioSource);
+        GameData.Instance.Sounds.Add(audioSource);
     }
 
     private IEnumerator WaveTimer()
@@ -124,11 +121,11 @@ public class Spawner : MonoBehaviour
         while (timeLeft > 0)
         {
             timeLeft -= Time.deltaTime;
-            GameData.Instance.timeToNextWaveText.text = $"Time to next Wave: {Mathf.FloorToInt(timeLeft)}";
+            GameData.Instance.TimeToNextWaveText.text = $"Time to next Wave: {Mathf.FloorToInt(timeLeft)}";
             yield return null;
         }
-        int newWaveNum = ++GameData.Instance.currentWave;
-        GameData.Instance.waveNumText.text = $"Wave: {newWaveNum}";
+        GameData.Instance.IncreaseWave();
+        GameData.Instance.WaveNumText.text = $"Wave: {GameData.Instance.CurrentWave}";
 
         for (int i = previousSummOfProgression; i < enemiesOnScreen.Count; i++)
         {
